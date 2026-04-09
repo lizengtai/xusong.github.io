@@ -3349,10 +3349,27 @@ function showPopup(message, isCorrect) {
     
     // 随机选择一张照片
     const randomPhotoId = Math.floor(Math.random() * xuSongPhotos.length);
-    const photoUrl = xuSongPhotos[randomPhotoId];
+    let photoUrl = xuSongPhotos[randomPhotoId];
+    
+    // 确保路径正确，移除重复的域名
+    const currentUrl = window.location.href;
+    const baseUrl = currentUrl.split('/').slice(0, 3).join('/');
+    const pathname = currentUrl.split('/').slice(3).filter(Boolean);
+    
+    // 构建正确的图片路径
+    let correctPath;
+    if (pathname.length > 0 && pathname[0] === 'xusong.github.io') {
+        // 如果URL中已经包含了仓库名
+        correctPath = `/${pathname[0]}/${photoUrl}`;
+    } else {
+        // 普通路径
+        correctPath = photoUrl;
+    }
+    
+    photoUrl = correctPath;
     console.log('尝试加载图片:', photoUrl);
-    console.log('当前页面URL:', window.location.href);
-    console.log('完整图片URL:', new URL(photoUrl, window.location.href).href);
+    console.log('当前页面URL:', currentUrl);
+    console.log('完整图片URL:', new URL(photoUrl, baseUrl).href);
     
     // 创建弹窗元素
     const popup = document.createElement('div');
