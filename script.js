@@ -3359,7 +3359,7 @@ function showPopup(message, isCorrect) {
             <h2>${isCorrect ? '回答正确！' : '回答错误！'}</h2>
             ${message ? `<p>${message}</p>` : ''}
             <p class="message">${isCorrect ? randomEncouragement : randomComfort}</p>
-            ${isCorrect ? `<div class="photo-container"><img src="${photoUrl}" alt="许嵩照片" class="xu-song-photo" onerror="this.style.display='none'; this.parentElement.style.display='none';"/></div>` : ''}
+            ${isCorrect ? `<div class="photo-container"><img src="${photoUrl}" alt="许嵩照片" class="xu-song-photo"/></div>` : ''}
             <button class="popup-btn ${isCorrect ? 'correct' : 'error'}">${isCorrect ? '下一关' : '重新开始'}</button>
         </div>
     `;
