@@ -3322,29 +3322,29 @@ function showPopup(message, isCorrect) {
     const randomEncouragement = encouragementMessages[Math.floor(Math.random() * encouragementMessages.length)];
     const randomComfort = comfortMessages[Math.floor(Math.random() * comfortMessages.length)];
     
-    // 本地许嵩照片路径数组
+    // 本地许嵩照片路径数组（使用相对路径）
     const xuSongPhotos = [
-        "/xu-song-photos/IMG_5746.PNG",
-        "/xu-song-photos/IMG_5747.PNG",
-        "/xu-song-photos/IMG_5748.PNG",
-        "/xu-song-photos/IMG_5749.PNG",
-        "/xu-song-photos/IMG_5750.PNG",
-        "/xu-song-photos/IMG_5751.PNG",
-        "/xu-song-photos/IMG_5752.PNG",
-        "/xu-song-photos/IMG_5753.PNG",
-        "/xu-song-photos/IMG_5754.PNG",
-        "/xu-song-photos/IMG_5755.PNG",
-        "/xu-song-photos/IMG_5756.PNG",
-        "/xu-song-photos/IMG_5757.PNG",
-        "/xu-song-photos/IMG_5758.PNG",
-        "/xu-song-photos/IMG_5759.PNG",
-        "/xu-song-photos/IMG_5760.PNG",
-        "/xu-song-photos/IMG_5761.PNG",
-        "/xu-song-photos/IMG_5762.PNG",
-        "/xu-song-photos/IMG_5763.PNG",
-        "/xu-song-photos/IMG_5764.PNG",
-        "/xu-song-photos/IMG_5765.PNG",
-        "/xu-song-photos/IMG_5766.PNG"
+        "xu-song-photos/IMG_5746.PNG",
+        "xu-song-photos/IMG_5747.PNG",
+        "xu-song-photos/IMG_5748.PNG",
+        "xu-song-photos/IMG_5749.PNG",
+        "xu-song-photos/IMG_5750.PNG",
+        "xu-song-photos/IMG_5751.PNG",
+        "xu-song-photos/IMG_5752.PNG",
+        "xu-song-photos/IMG_5753.PNG",
+        "xu-song-photos/IMG_5754.PNG",
+        "xu-song-photos/IMG_5755.PNG",
+        "xu-song-photos/IMG_5756.PNG",
+        "xu-song-photos/IMG_5757.PNG",
+        "xu-song-photos/IMG_5758.PNG",
+        "xu-song-photos/IMG_5759.PNG",
+        "xu-song-photos/IMG_5760.PNG",
+        "xu-song-photos/IMG_5761.PNG",
+        "xu-song-photos/IMG_5762.PNG",
+        "xu-song-photos/IMG_5763.PNG",
+        "xu-song-photos/IMG_5764.PNG",
+        "xu-song-photos/IMG_5765.PNG",
+        "xu-song-photos/IMG_5766.PNG"
     ];
     
     // 随机选择一张照片
@@ -3359,7 +3359,7 @@ function showPopup(message, isCorrect) {
             <h2>${isCorrect ? '回答正确！' : '回答错误！'}</h2>
             ${message ? `<p>${message}</p>` : ''}
             <p class="message">${isCorrect ? randomEncouragement : randomComfort}</p>
-            ${isCorrect ? `<div class="photo-container"><img src="${photoUrl}" alt="许嵩照片" class="xu-song-photo" onload="console.log('图片加载成功:', this.src)" onerror="console.log('图片加载失败:', this.src); this.src='${photoUrl}';"/></div>` : ''}
+            ${isCorrect ? `<div class="photo-container"><img src="${photoUrl}" alt="许嵩照片" class="xu-song-photo" style="display: block; margin: 0 auto;"/></div>` : ''}
             <button class="popup-btn ${isCorrect ? 'correct' : 'error'}">${isCorrect ? '下一关' : '重新开始'}</button>
         </div>
     `;
