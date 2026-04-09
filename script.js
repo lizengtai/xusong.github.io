@@ -3322,9 +3322,37 @@ function showPopup(message, isCorrect) {
     const randomEncouragement = encouragementMessages[Math.floor(Math.random() * encouragementMessages.length)];
     const randomComfort = comfortMessages[Math.floor(Math.random() * comfortMessages.length)];
     
-    // 直接使用固定的图片路径，确保能够正确加载
-    const photoUrl = "xu-song-photos/IMG_5746.PNG";
+    // 本地许嵩照片路径数组
+    const xuSongPhotos = [
+        "xu-song-photos/IMG_5746.PNG",
+        "xu-song-photos/IMG_5747.PNG",
+        "xu-song-photos/IMG_5748.PNG",
+        "xu-song-photos/IMG_5749.PNG",
+        "xu-song-photos/IMG_5750.PNG",
+        "xu-song-photos/IMG_5751.PNG",
+        "xu-song-photos/IMG_5752.PNG",
+        "xu-song-photos/IMG_5753.PNG",
+        "xu-song-photos/IMG_5754.PNG",
+        "xu-song-photos/IMG_5755.PNG",
+        "xu-song-photos/IMG_5756.PNG",
+        "xu-song-photos/IMG_5757.PNG",
+        "xu-song-photos/IMG_5758.PNG",
+        "xu-song-photos/IMG_5759.PNG",
+        "xu-song-photos/IMG_5760.PNG",
+        "xu-song-photos/IMG_5761.PNG",
+        "xu-song-photos/IMG_5762.PNG",
+        "xu-song-photos/IMG_5763.PNG",
+        "xu-song-photos/IMG_5764.PNG",
+        "xu-song-photos/IMG_5765.PNG",
+        "xu-song-photos/IMG_5766.PNG"
+    ];
+    
+    // 随机选择一张照片
+    const randomPhotoId = Math.floor(Math.random() * xuSongPhotos.length);
+    const photoUrl = xuSongPhotos[randomPhotoId];
     console.log('尝试加载图片:', photoUrl);
+    console.log('当前页面URL:', window.location.href);
+    console.log('完整图片URL:', new URL(photoUrl, window.location.href).href);
     
     // 创建弹窗元素
     const popup = document.createElement('div');
