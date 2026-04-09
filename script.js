@@ -3324,27 +3324,27 @@ function showPopup(message, isCorrect) {
     
     // 本地许嵩照片路径数组
     const xuSongPhotos = [
-        "xu-song-photos/IMG_5746.PNG",
-        "xu-song-photos/IMG_5747.PNG",
-        "xu-song-photos/IMG_5748.PNG",
-        "xu-song-photos/IMG_5749.PNG",
-        "xu-song-photos/IMG_5750.PNG",
-        "xu-song-photos/IMG_5751.PNG",
-        "xu-song-photos/IMG_5752.PNG",
-        "xu-song-photos/IMG_5753.PNG",
-        "xu-song-photos/IMG_5754.PNG",
-        "xu-song-photos/IMG_5755.PNG",
-        "xu-song-photos/IMG_5756.PNG",
-        "xu-song-photos/IMG_5757.PNG",
-        "xu-song-photos/IMG_5758.PNG",
-        "xu-song-photos/IMG_5759.PNG",
-        "xu-song-photos/IMG_5760.PNG",
-        "xu-song-photos/IMG_5761.PNG",
-        "xu-song-photos/IMG_5762.PNG",
-        "xu-song-photos/IMG_5763.PNG",
-        "xu-song-photos/IMG_5764.PNG",
-        "xu-song-photos/IMG_5765.PNG",
-        "xu-song-photos/IMG_5766.PNG"
+        "/xu-song-photos/IMG_5746.PNG",
+        "/xu-song-photos/IMG_5747.PNG",
+        "/xu-song-photos/IMG_5748.PNG",
+        "/xu-song-photos/IMG_5749.PNG",
+        "/xu-song-photos/IMG_5750.PNG",
+        "/xu-song-photos/IMG_5751.PNG",
+        "/xu-song-photos/IMG_5752.PNG",
+        "/xu-song-photos/IMG_5753.PNG",
+        "/xu-song-photos/IMG_5754.PNG",
+        "/xu-song-photos/IMG_5755.PNG",
+        "/xu-song-photos/IMG_5756.PNG",
+        "/xu-song-photos/IMG_5757.PNG",
+        "/xu-song-photos/IMG_5758.PNG",
+        "/xu-song-photos/IMG_5759.PNG",
+        "/xu-song-photos/IMG_5760.PNG",
+        "/xu-song-photos/IMG_5761.PNG",
+        "/xu-song-photos/IMG_5762.PNG",
+        "/xu-song-photos/IMG_5763.PNG",
+        "/xu-song-photos/IMG_5764.PNG",
+        "/xu-song-photos/IMG_5765.PNG",
+        "/xu-song-photos/IMG_5766.PNG"
     ];
     
     // 随机选择一张照片
