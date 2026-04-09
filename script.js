@@ -3353,12 +3353,20 @@ function showPopup(message, isCorrect) {
     
     // 确保路径正确，适应GitHub Pages的URL结构
     const currentUrl = window.location.href;
-    const baseUrl = currentUrl.split('/').slice(0, 3).join('/');
     console.log('当前完整URL:', currentUrl);
-    console.log('基础URL:', baseUrl);
     
-    // 直接使用相对路径，让浏览器自动处理
-    // 对于GitHub Pages，相对路径会自动基于当前页面的位置
+    // 检查当前URL的结构，构建正确的图片路径
+    let correctPath;
+    if (currentUrl.includes('lizengtai.github.io/xusong.github.io')) {
+        // 如果URL中包含了用户名和仓库名
+        // 直接使用相对于根目录的路径
+        correctPath = `/${photoUrl}`;
+    } else {
+        // 普通路径
+        correctPath = photoUrl;
+    }
+    
+    photoUrl = correctPath;
     console.log('尝试加载图片:', photoUrl);
     console.log('完整图片URL:', new URL(photoUrl, currentUrl).href);
     
