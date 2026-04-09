@@ -3350,6 +3350,7 @@ function showPopup(message, isCorrect) {
     // 随机选择一张照片
     const randomPhotoId = Math.floor(Math.random() * xuSongPhotos.length);
     const photoUrl = xuSongPhotos[randomPhotoId];
+    console.log('尝试加载图片:', photoUrl);
     
     // 创建弹窗元素
     const popup = document.createElement('div');
@@ -3359,7 +3360,7 @@ function showPopup(message, isCorrect) {
             <h2>${isCorrect ? '回答正确！' : '回答错误！'}</h2>
             ${message ? `<p>${message}</p>` : ''}
             <p class="message">${isCorrect ? randomEncouragement : randomComfort}</p>
-            ${isCorrect ? `<div class="photo-container"><img src="${photoUrl}" alt="许嵩照片" class="xu-song-photo" style="display: block; margin: 0 auto;"/></div>` : ''}
+            ${isCorrect ? `<div class="photo-container" style="margin: 20px 0; text-align: center;"><img src="${photoUrl}" alt="许嵩照片" class="xu-song-photo" style="max-width: 100%; max-height: 200px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" onload="console.log('图片加载成功:', this.src)" onerror="console.log('图片加载失败:', this.src); this.alt='图片加载失败'; this.style.border='2px solid red'; this.style.padding='10px'; this.style.backgroundColor='#f9f9f9';"/></div>` : ''}
             <button class="popup-btn ${isCorrect ? 'correct' : 'error'}">${isCorrect ? '下一关' : '重新开始'}</button>
         </div>
     `;
