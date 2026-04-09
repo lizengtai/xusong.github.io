@@ -1,0 +1,938 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SimSun', 'STSong', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: all 0.5s ease;
+}
+
+/* 古风风格1 - 淡雅紫 - 典雅卷轴风 */
+.style-1 {
+    background-color: #f5e6f7;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23e6d1e8" d="M0 0h100v100H0z"/><path fill="%23d8b3da" d="M0 0h50v50H0z"/><path fill="%23c994cc" d="M50 50h50v50H50z"/></svg>');
+}
+
+.style-1 .game-container {
+    background-color: #f9f0fa;
+    border: 3px solid #d1b3d6;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(173, 127, 180, 0.3);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="%23f0e0f2" d="M0 0h50v50H0z"/><path fill="%23e8d1ea" d="M0 0h25v25H0z"/><path fill="%23e0c2e3" d="M25 25h25v25H25z"/></svg>');
+    position: relative;
+}
+
+.style-1 .game-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 1px solid #d1b3d6;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+.style-1 .game-title {
+    color: #8b5a91;
+    text-shadow: 2px 2px 4px rgba(139, 90, 145, 0.3);
+    font-family: 'STZhongsong', 'SimSun', serif;
+    position: relative;
+    display: inline-block;
+}
+
+.style-1 .game-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d1b3d6, transparent);
+}
+
+.style-1 .level-info {
+    color: #9b6aa0;
+    font-family: 'STKaiti', 'KaiTi', serif;
+}
+
+.style-1 .lyrics-container {
+    background-color: rgba(249, 240, 250, 0.8);
+    border: 1px solid #d1b3d6;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(173, 127, 180, 0.2);
+    position: relative;
+    padding: 40px 30px;
+}
+
+.style-1 .lyrics-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(209, 179, 214, 0.3);
+    border-radius: 5px;
+}
+
+.style-1 .lyrics-container p {
+    color: #7a4a80;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    position: relative;
+    z-index: 1;
+}
+
+.style-1 .option-btn {
+    border: 2px solid #d1b3d6;
+    background-color: #f9f0fa;
+    color: #7a4a80;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.style-1 .option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(209, 179, 214, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.style-1 .option-btn:hover::before {
+    left: 100%;
+}
+
+.style-1 .option-btn:hover {
+    background-color: #f0e0f2;
+    border-color: #b894bd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(173, 127, 180, 0.3);
+}
+
+.style-1 .restart-btn {
+    background-color: #a87aae;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    box-shadow: 0 4px 8px rgba(173, 127, 180, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.style-1 .restart-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.style-1 .restart-btn:hover::before {
+    left: 100%;
+}
+
+.style-1 .restart-btn:hover {
+    background-color: #95689b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(173, 127, 180, 0.4);
+}
+
+.style-1 .popup-content {
+    background-color: #f9f0fa;
+    border: 2px solid #d1b3d6;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(173, 127, 180, 0.5);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="%23f0e0f2" d="M0 0h50v50H0z"/><path fill="%23e8d1ea" d="M0 0h25v25H0z"/><path fill="%23e0c2e3" d="M25 25h25v25H25z"/></svg>');
+    position: relative;
+}
+
+.style-1 .popup-content::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid #d1b3d6;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+.style-1 .popup-content h2 {
+    color: #8b5a91;
+    font-family: 'STZhongsong', 'SimSun', serif;
+}
+
+.style-1 .popup-content p {
+    color: #7a4a80;
+    font-family: 'STKaiti', 'KaiTi', serif;
+}
+
+.style-1 .popup-content p.message {
+    color: #8b5a91;
+    font-style: italic;
+}
+
+/* 古风风格2 - 典雅蓝 - 青花瓷风 */
+.style-2 {
+    background-color: #e6f0f7;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23d1e6f0" d="M0 0h100v100H0z"/><path fill="%23b8d6e8" d="M0 0h50v50H0z"/><path fill="%239fc6da" d="M50 50h50v50H50z"/></svg>');
+}
+
+.style-2 .game-container {
+    background-color: #f0f7fa;
+    border: 3px solid #a8c8d8;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(168, 200, 216, 0.3);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="%23e0f0f7" d="M0 0h50v50H0z"/><path fill="%23d0e6f0" d="M0 0h25v25H0z"/><path fill="%23c0dbf0" d="M25 25h25v25H25z"/></svg>');
+    position: relative;
+}
+
+.style-2 .game-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 1px solid #a8c8d8;
+    border-radius: 20px;
+    z-index: -1;
+    background: linear-gradient(45deg, rgba(168, 200, 216, 0.1), transparent);
+}
+
+.style-2 .game-title {
+    color: #5a7a91;
+    text-shadow: 2px 2px 4px rgba(90, 122, 145, 0.3);
+    font-family: 'STZhongsong', 'SimSun', serif;
+    position: relative;
+    display: inline-block;
+}
+
+.style-2 .game-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #a8c8d8, transparent);
+}
+
+.style-2 .level-info {
+    color: #6a8aa0;
+    font-family: 'STKaiti', 'KaiTi', serif;
+}
+
+.style-2 .lyrics-container {
+    background-color: rgba(240, 247, 250, 0.8);
+    border: 1px solid #a8c8d8;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(168, 200, 216, 0.2);
+    position: relative;
+    padding: 40px 30px;
+}
+
+.style-2 .lyrics-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(168, 200, 216, 0.3);
+    border-radius: 5px;
+}
+
+.style-2 .lyrics-container p {
+    color: #4a6a80;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    position: relative;
+    z-index: 1;
+}
+
+.style-2 .option-btn {
+    border: 2px solid #a8c8d8;
+    background-color: #f0f7fa;
+    color: #4a6a80;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.style-2 .option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(168, 200, 216, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.style-2 .option-btn:hover::before {
+    left: 100%;
+}
+
+.style-2 .option-btn:hover {
+    background-color: #e0f0f7;
+    border-color: #88a8b8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(168, 200, 216, 0.3);
+}
+
+.style-2 .restart-btn {
+    background-color: #7898a8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    box-shadow: 0 4px 8px rgba(168, 200, 216, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.style-2 .restart-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.style-2 .restart-btn:hover::before {
+    left: 100%;
+}
+
+.style-2 .restart-btn:hover {
+    background-color: #658595;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(168, 200, 216, 0.4);
+}
+
+.style-2 .popup-content {
+    background-color: #f0f7fa;
+    border: 2px solid #a8c8d8;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(168, 200, 216, 0.5);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="%23e0f0f7" d="M0 0h50v50H0z"/><path fill="%23d0e6f0" d="M0 0h25v25H0z"/><path fill="%23c0dbf0" d="M25 25h25v25H25z"/></svg>');
+    position: relative;
+}
+
+.style-2 .popup-content::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid #a8c8d8;
+    border-radius: 20px;
+    z-index: -1;
+    background: linear-gradient(45deg, rgba(168, 200, 216, 0.1), transparent);
+}
+
+.style-2 .popup-content h2 {
+    color: #5a7a91;
+    font-family: 'STZhongsong', 'SimSun', serif;
+}
+
+.style-2 .popup-content p {
+    color: #4a6a80;
+    font-family: 'STKaiti', 'KaiTi', serif;
+}
+
+.style-2 .popup-content p.message {
+    color: #5a7a91;
+    font-style: italic;
+}
+
+/* 古风风格3 - 古朴棕 - 竹简风 */
+.style-3 {
+    background-color: #f7f0e6;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23e8d1c6" d="M0 0h100v100H0z"/><path fill="%23daa886" d="M0 0h50v50H0z"/><path fill="%23cd9476" d="M50 50h50v50H50z"/></svg>');
+}
+
+.style-3 .game-container {
+    background-color: #f9f5f0;
+    border: 3px solid #c8a888;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(200, 168, 136, 0.3);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="%23f0e6d6" d="M0 0h50v50H0z"/><path fill="%23e6d6c6" d="M0 0h25v25H0z"/><path fill="%23d6c6b6" d="M25 25h25v25H25z"/></svg>');
+    position: relative;
+}
+
+.style-3 .game-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 1px solid #c8a888;
+    border-radius: 20px;
+    z-index: -1;
+    background: linear-gradient(45deg, rgba(200, 168, 136, 0.1), transparent);
+}
+
+.style-3 .game-title {
+    color: #8a6a4a;
+    text-shadow: 2px 2px 4px rgba(138, 106, 74, 0.3);
+    font-family: 'STZhongsong', 'SimSun', serif;
+    position: relative;
+    display: inline-block;
+}
+
+.style-3 .game-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c8a888, transparent);
+}
+
+.style-3 .level-info {
+    color: #9a7a5a;
+    font-family: 'STKaiti', 'KaiTi', serif;
+}
+
+.style-3 .lyrics-container {
+    background-color: rgba(249, 245, 240, 0.8);
+    border: 1px solid #c8a888;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(200, 168, 136, 0.2);
+    position: relative;
+    padding: 40px 30px;
+}
+
+.style-3 .lyrics-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(200, 168, 136, 0.3);
+    border-radius: 5px;
+}
+
+.style-3 .lyrics-container p {
+    color: #7a5a3a;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    position: relative;
+    z-index: 1;
+}
+
+.style-3 .option-btn {
+    border: 2px solid #c8a888;
+    background-color: #f9f5f0;
+    color: #7a5a3a;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.style-3 .option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(200, 168, 136, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.style-3 .option-btn:hover::before {
+    left: 100%;
+}
+
+.style-3 .option-btn:hover {
+    background-color: #f0e6d6;
+    border-color: #b89878;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(200, 168, 136, 0.3);
+}
+
+.style-3 .restart-btn {
+    background-color: #987858;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    box-shadow: 0 4px 8px rgba(200, 168, 136, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.style-3 .restart-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.style-3 .restart-btn:hover::before {
+    left: 100%;
+}
+
+.style-3 .restart-btn:hover {
+    background-color: #856545;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(200, 168, 136, 0.4);
+}
+
+.style-3 .popup-content {
+    background-color: #f9f5f0;
+    border: 2px solid #c8a888;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(200, 168, 136, 0.5);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="%23f0e6d6" d="M0 0h50v50H0z"/><path fill="%23e6d6c6" d="M0 0h25v25H0z"/><path fill="%23d6c6b6" d="M25 25h25v25H25z"/></svg>');
+    position: relative;
+}
+
+.style-3 .popup-content::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid #c8a888;
+    border-radius: 20px;
+    z-index: -1;
+    background: linear-gradient(45deg, rgba(200, 168, 136, 0.1), transparent);
+}
+
+.style-3 .popup-content h2 {
+    color: #8a6a4a;
+    font-family: 'STZhongsong', 'SimSun', serif;
+}
+
+.style-3 .popup-content p {
+    color: #7a5a3a;
+    font-family: 'STKaiti', 'KaiTi', serif;
+}
+
+.style-3 .popup-content p.message {
+    color: #8a6a4a;
+    font-style: italic;
+}
+
+/* 古风风格4 - 清新绿 - 山水风 */
+.style-4 {
+    background-color: #e6f7f0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23d1e8e0" d="M0 0h100v100H0z"/><path fill="%23b8d8c8" d="M0 0h50v50H0z"/><path fill="%239fcaaa" d="M50 50h50v50H50z"/></svg>');
+}
+
+.style-4 .game-container {
+    background-color: #f0f7f0;
+    border: 3px solid #a8c8b8;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(168, 200, 184, 0.3);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="%23e0f0e7" d="M0 0h50v50H0z"/><path fill="%23d0e8d8" d="M0 0h25v25H0z"/><path fill="%23c0dbca" d="M25 25h25v25H25z"/></svg>');
+    position: relative;
+}
+
+.style-4 .game-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 1px solid #a8c8b8;
+    border-radius: 20px;
+    z-index: -1;
+    background: linear-gradient(45deg, rgba(168, 200, 184, 0.1), transparent);
+}
+
+.style-4 .game-title {
+    color: #5a917a;
+    text-shadow: 2px 2px 4px rgba(90, 145, 122, 0.3);
+    font-family: 'STZhongsong', 'SimSun', serif;
+    position: relative;
+    display: inline-block;
+}
+
+.style-4 .game-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #a8c8b8, transparent);
+}
+
+.style-4 .level-info {
+    color: #6aa08a;
+    font-family: 'STKaiti', 'KaiTi', serif;
+}
+
+.style-4 .lyrics-container {
+    background-color: rgba(240, 247, 240, 0.8);
+    border: 1px solid #a8c8b8;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(168, 200, 184, 0.2);
+    position: relative;
+    padding: 40px 30px;
+}
+
+.style-4 .lyrics-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(168, 200, 184, 0.3);
+    border-radius: 5px;
+}
+
+.style-4 .lyrics-container p {
+    color: #4a806a;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    position: relative;
+    z-index: 1;
+}
+
+.style-4 .option-btn {
+    border: 2px solid #a8c8b8;
+    background-color: #f0f7f0;
+    color: #4a806a;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.style-4 .option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(168, 200, 184, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.style-4 .option-btn:hover::before {
+    left: 100%;
+}
+
+.style-4 .option-btn:hover {
+    background-color: #e0f0e7;
+    border-color: #88a898;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(168, 200, 184, 0.3);
+}
+
+.style-4 .restart-btn {
+    background-color: #78a898;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    box-shadow: 0 4px 8px rgba(168, 200, 184, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.style-4 .restart-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.style-4 .restart-btn:hover::before {
+    left: 100%;
+}
+
+.style-4 .restart-btn:hover {
+    background-color: #659585;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(168, 200, 184, 0.4);
+}
+
+.style-4 .popup-content {
+    background-color: #f0f7f0;
+    border: 2px solid #a8c8b8;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(168, 200, 184, 0.5);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="%23e0f0e7" d="M0 0h50v50H0z"/><path fill="%23d0e8d8" d="M0 0h25v25H0z"/><path fill="%23c0dbca" d="M25 25h25v25H25z"/></svg>');
+    position: relative;
+}
+
+.style-4 .popup-content::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid #a8c8b8;
+    border-radius: 20px;
+    z-index: -1;
+    background: linear-gradient(45deg, rgba(168, 200, 184, 0.1), transparent);
+}
+
+.style-4 .popup-content h2 {
+    color: #5a917a;
+    font-family: 'STZhongsong', 'SimSun', serif;
+}
+
+.style-4 .popup-content p {
+    color: #4a806a;
+    font-family: 'STKaiti', 'KaiTi', serif;
+}
+
+.style-4 .popup-content p.message {
+    color: #5a917a;
+    font-style: italic;
+}
+
+/* 通用样式 */
+.game-container {
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.game-title {
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    transition: all 0.5s ease;
+}
+
+.level-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+    transition: all 0.5s ease;
+}
+
+.lyrics-container {
+    margin-bottom: 30px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.5s ease;
+}
+
+.lyrics-container p {
+    font-size: 1.3em;
+    line-height: 1.5;
+    margin: 10px 0;
+    transition: all 0.5s ease;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.option-btn {
+    padding: 15px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-btn:hover {
+    transform: translateY(-2px);
+}
+
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.option-btn.correct {
+    background-color: #e6f0e8;
+    border-color: #c3d6cb;
+    color: #5a8064;
+}
+
+.option-btn.incorrect {
+    background-color: #f0e6e8;
+    border-color: #d6c3c6;
+    color: #805a64;
+}
+
+.result {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    min-height: 30px;
+    transition: all 0.5s ease;
+}
+
+.restart-btn {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* 弹窗样式 */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.popup-content h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    transition: all 0.5s ease;
+}
+
+.popup-content p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    transition: all 0.5s ease;
+}
+
+.popup-content p.message {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    transition: all 0.5s ease;
+}
+
+.photo-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.xu-song-photo {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.xu-song-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.popup-btn {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'STKaiti', 'KaiTi', serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-btn.correct {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.popup-btn.correct:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+}
+
+.popup-btn.error {
+    background-color: #f44336;
+    color: white;
+}
+
+.popup-btn.error:hover {
+    background-color: #da190b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(244, 67, 54, 0.4);
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        padding: 20px;
+    }
+    
+    .game-title {
+        font-size: 2em;
+    }
+    
+    .options-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .popup-content {
+        padding: 20px;
+        margin: 20px;
+    }
+}
