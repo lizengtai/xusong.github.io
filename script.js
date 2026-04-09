@@ -1890,14 +1890,25 @@ const songs = [
     {
         title: '有桃花',
         lyrics: [
-            '十里桃林 待嫁的年华',
-            '凤冠的珍珠 挽进头发',
-            '檀香拂过 玉镯弄轻纱',
-            '空留一盏 芽色的清茶',
-            '倘若我心中的山水 你眼中都看到',
-            '我便一步一莲花祈祷',
-            '怎知那浮生一片草 岁月催人老',
-            '风月花鸟 一笑尘缘了'
+            '赏花赋月不是我本领',
+            '也不如人家有型阔气',
+            '好多朋友都劝我别再追随你',
+            '别做一条爱上沙漠的鱼',
+            '可我知道他们都不懂你',
+            '我也没那么容易放弃',
+            '在茫茫人海之中有一颗真心',
+            '要不要 选择权在你',
+            '是差点运气 可我一直在努力',
+            '每次见到你 都加固爱的决心',
+            '请爱我 哪怕你心中还有点困惑',
+            '请爱我 我乐意给你我有的所有',
+            '请爱我 别再花脑细胞用理性思索',
+            '时间会证明你没有看错',
+            '映日荷花别样红',
+            '映日桃花别笑春风',
+            '谁是谁的桃花还很难说 我太主动',
+            '有桃花 有桃花 谁是谁的桃花',
+            '有桃花 有桃花'
         ]
     },
     {
@@ -3384,9 +3395,13 @@ function showPopup(message, isCorrect) {
     const popupBtn = popup.querySelector('.popup-btn');
     if (isCorrect) {
         popupBtn.addEventListener('click', () => {
-            currentLevel++;
-            updateLevelInfo();
-            loadNextLevel();
+            if (currentLevel >= 100) {
+                showVictory();
+            } else {
+                currentLevel++;
+                updateLevelInfo();
+                loadNextLevel();
+            }
             document.body.removeChild(popup);
         });
     } else {
