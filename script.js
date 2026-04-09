@@ -3351,25 +3351,16 @@ function showPopup(message, isCorrect) {
     const randomPhotoId = Math.floor(Math.random() * xuSongPhotos.length);
     let photoUrl = xuSongPhotos[randomPhotoId];
     
-    // 确保路径正确，移除重复的域名
+    // 确保路径正确，适应GitHub Pages的URL结构
     const currentUrl = window.location.href;
     const baseUrl = currentUrl.split('/').slice(0, 3).join('/');
-    const pathname = currentUrl.split('/').slice(3).filter(Boolean);
+    console.log('当前完整URL:', currentUrl);
+    console.log('基础URL:', baseUrl);
     
-    // 构建正确的图片路径
-    let correctPath;
-    if (pathname.length > 0 && pathname[0] === 'xusong.github.io') {
-        // 如果URL中已经包含了仓库名
-        correctPath = `/${pathname[0]}/${photoUrl}`;
-    } else {
-        // 普通路径
-        correctPath = photoUrl;
-    }
-    
-    photoUrl = correctPath;
+    // 直接使用相对路径，让浏览器自动处理
+    // 对于GitHub Pages，相对路径会自动基于当前页面的位置
     console.log('尝试加载图片:', photoUrl);
-    console.log('当前页面URL:', currentUrl);
-    console.log('完整图片URL:', new URL(photoUrl, baseUrl).href);
+    console.log('完整图片URL:', new URL(photoUrl, currentUrl).href);
     
     // 创建弹窗元素
     const popup = document.createElement('div');
