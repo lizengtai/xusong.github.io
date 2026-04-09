@@ -3359,7 +3359,7 @@ function showPopup(message, isCorrect) {
             <h2>${isCorrect ? '回答正确！' : '回答错误！'}</h2>
             ${message ? `<p>${message}</p>` : ''}
             <p class="message">${isCorrect ? randomEncouragement : randomComfort}</p>
-            ${isCorrect ? `<div class="photo-container"><img src="${photoUrl}" alt="许嵩照片" class="xu-song-photo" onerror="this.src='https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=许嵩%20Xu%20Song%20Chinese%20singer%20portrait&image_size=portrait_4_3'"/></div>` : ''}
+            ${isCorrect ? `<div class="photo-container"><img src="${photoUrl}" alt="许嵩照片" class="xu-song-photo" onerror="this.style.display='none'; this.parentElement.style.display='none';"/></div>` : ''}
             <button class="popup-btn ${isCorrect ? 'correct' : 'error'}">${isCorrect ? '下一关' : '重新开始'}</button>
         </div>
     `;
