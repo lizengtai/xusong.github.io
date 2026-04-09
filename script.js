@@ -3322,8 +3322,9 @@ function showPopup(message, isCorrect) {
     const randomEncouragement = encouragementMessages[Math.floor(Math.random() * encouragementMessages.length)];
     const randomComfort = comfortMessages[Math.floor(Math.random() * comfortMessages.length)];
     
-    // 本地许嵩照片路径数组（使用相对路径）
+    // 本地许嵩照片路径数组（包含两种大小写形式）
     const xuSongPhotos = [
+        // 大写形式
         "xu-song-photos/IMG_5746.PNG",
         "xu-song-photos/IMG_5747.PNG",
         "xu-song-photos/IMG_5748.PNG",
@@ -3344,7 +3345,29 @@ function showPopup(message, isCorrect) {
         "xu-song-photos/IMG_5763.PNG",
         "xu-song-photos/IMG_5764.PNG",
         "xu-song-photos/IMG_5765.PNG",
-        "xu-song-photos/IMG_5766.PNG"
+        "xu-song-photos/IMG_5766.PNG",
+        // 小写形式
+        "xu-song-photos/img_5746.png",
+        "xu-song-photos/img_5747.png",
+        "xu-song-photos/img_5748.png",
+        "xu-song-photos/img_5749.png",
+        "xu-song-photos/img_5750.png",
+        "xu-song-photos/img_5751.png",
+        "xu-song-photos/img_5752.png",
+        "xu-song-photos/img_5753.png",
+        "xu-song-photos/img_5754.png",
+        "xu-song-photos/img_5755.png",
+        "xu-song-photos/img_5756.png",
+        "xu-song-photos/img_5757.png",
+        "xu-song-photos/img_5758.png",
+        "xu-song-photos/img_5759.png",
+        "xu-song-photos/img_5760.png",
+        "xu-song-photos/img_5761.png",
+        "xu-song-photos/img_5762.png",
+        "xu-song-photos/img_5763.png",
+        "xu-song-photos/img_5764.png",
+        "xu-song-photos/img_5765.png",
+        "xu-song-photos/img_5766.png"
     ];
     
     // 随机选择一张照片
