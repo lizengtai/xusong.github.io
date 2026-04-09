@@ -3355,20 +3355,14 @@ function showPopup(message, isCorrect) {
     const currentUrl = window.location.href;
     console.log('当前完整URL:', currentUrl);
     
-    // 检查当前URL的结构，构建正确的图片路径
-    let correctPath;
-    if (currentUrl.includes('lizengtai.github.io/xusong.github.io')) {
-        // 如果URL中包含了用户名和仓库名
-        // 直接使用相对于根目录的路径
-        correctPath = `/${photoUrl}`;
-    } else {
-        // 普通路径
-        correctPath = photoUrl;
-    }
-    
-    photoUrl = correctPath;
+    // 直接使用相对路径，不做任何处理
+    // 让浏览器根据当前页面的位置自动解析路径
     console.log('尝试加载图片:', photoUrl);
-    console.log('完整图片URL:', new URL(photoUrl, currentUrl).href);
+    
+    // 构建完整的图片URL用于调试
+    const tempUrl = new URL(window.location.href);
+    tempUrl.pathname = tempUrl.pathname.replace(/[^/]+$/, photoUrl);
+    console.log('完整图片URL:', tempUrl.href);
     
     // 创建弹窗元素
     const popup = document.createElement('div');
